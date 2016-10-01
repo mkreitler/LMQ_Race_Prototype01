@@ -48,6 +48,7 @@
      <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
      <None Include="Assets\racetrack\Characters\RollerBall\RollerBallGuidelines.txt" />
      <None Include="Assets\racetrack\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
+     <None Include="Assets\Res\Cars\AE_CARS\SAMOCHODY\Car_18\Skybox\readme.txt" />
      <None Include="Assets\racetrack\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
