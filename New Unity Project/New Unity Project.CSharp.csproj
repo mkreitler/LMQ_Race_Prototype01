@@ -69,8 +69,49 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\DragField.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\ExposeToEditor.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\HierarchyItem.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\MouseOrbit.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\Placeholder.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\RuntimeEditor.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\RuntimeHierarchy.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\RuntimePrefabs.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\RuntimeSceneView.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\RuntimeToolsPanel.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\TransformComponent.cs" />
+    <Compile Include="Assets\Battlehub\RTEditor\Scripts\ViewportFitter.cs" />
+    <Compile Include="Assets\Battlehub\RTHandles\Scripts\BaseHandle.cs" />
+    <Compile Include="Assets\Battlehub\RTHandles\Scripts\GLCamera.cs" />
+    <Compile Include="Assets\Battlehub\RTHandles\Scripts\GLRenderer.cs" />
+    <Compile Include="Assets\Battlehub\RTHandles\Scripts\Grid.cs" />
+    <Compile Include="Assets\Battlehub\RTHandles\Scripts\PositionHandle.cs" />
+    <Compile Include="Assets\Battlehub\RTHandles\Scripts\RotationHandle.cs" />
+    <Compile Include="Assets\Battlehub\RTHandles\Scripts\RuntimeHandles.cs" />
+    <Compile Include="Assets\Battlehub\RTHandles\Scripts\ScaleHandle.cs" />
+    <Compile Include="Assets\Battlehub\RTHandles\Scripts\SceneGizmo.cs" />
+    <Compile Include="Assets\Battlehub\SaveInPlayMode\Scripts\SaveInPlayMode.cs" />
+    <Compile Include="Assets\Battlehub\SplineEditor\Scripts\CurveUtils.cs" />
+    <Compile Include="Assets\Battlehub\SplineEditor\Scripts\Spline.cs" />
+    <Compile Include="Assets\Battlehub\SplineEditor\Scripts\SplineBase.cs" />
+    <Compile Include="Assets\Battlehub\SplineEditor\Scripts\SplineControlPoint.cs" />
+    <Compile Include="Assets\Battlehub\SplineEditor\Scripts\SplineRuntimeCmd.cs" />
+    <Compile Include="Assets\Battlehub\SplineEditor\Scripts\SplineRuntimeEditor.cs" />
+    <Compile Include="Assets\Battlehub\UIControls\Scripts\ItemContainer.cs" />
+    <Compile Include="Assets\Battlehub\UIControls\Scripts\ItemDropMarker.cs" />
+    <Compile Include="Assets\Battlehub\UIControls\Scripts\ItemsControl.cs" />
+    <Compile Include="Assets\Battlehub\UIControls\Scripts\ListBox.cs" />
+    <Compile Include="Assets\Battlehub\UIControls\Scripts\ListBoxItem.cs" />
+    <Compile Include="Assets\Battlehub\UIControls\Scripts\TreeView.cs" />
+    <Compile Include="Assets\Battlehub\UIControls\Scripts\TreeViewDropMarker.cs" />
+    <Compile Include="Assets\Battlehub\UIControls\Scripts\TreeViewExpander.cs" />
+    <Compile Include="Assets\Battlehub\UIControls\Scripts\TreeViewItem.cs" />
+    <Compile Include="Assets\Battlehub\Utils\EditorStopwatch.cs" />
+    <Compile Include="Assets\Battlehub\Utils\ExposePropertyAttribute.cs" />
+    <Compile Include="Assets\Battlehub\Utils\Run.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\RaceCamera.cs" />
+    <Compile Include="Assets\Scripts\SplineFollow.cs" />
     <Compile Include="Assets\racetrack\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\racetrack\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
     <Compile Include="Assets\racetrack\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
@@ -83,6 +124,15 @@
     <Compile Include="Assets\racetrack\LightsOn.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\Billboard.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\Grid.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\Shape.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\VertexColor.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\VertexColorBillboard.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\VertexColorClip.shader" />
+    <None Include="Assets\Battlehub\SplineEditor\Shaders\Resources\SSBillboard.shader" />
+    <None Include="Assets\Battlehub\SplineEditor\Shaders\Resources\Spline.shader" />
+    <None Include="Assets\Res\Cars\AE_CARS\SAMOCHODY\Car_18\Skybox\readme.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
     <None Include="Assets\racetrack\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

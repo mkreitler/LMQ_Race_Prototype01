@@ -1,94 +1,86 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Battlehub.SplineEditor;
 
 namespace LMQ_TrackTest {
 
-public class RaceCamera : MonoBehaviour {
-	public enum eSlotState {UNKNOWN,
-							SLOT_RIGHT,
-							SLOT_LEFT,
-							TRANSITIONING};
-	[SerializeField]
-	GameObject respawnPoint = null;
+    public class RaceCamera : MonoBehaviour {
+        [SerializeField]
+        float topSpeed = 6.0f;
 
-	[SerializeField]
-	float speed = 100.0f;
+        [SerializeField]
+        float blendRate = 5.0f;
 
-	[SerializeField]
-	float blendRate = 20.0f;
+        [SerializeField]
+        SplineFollow[] tracker = { null, null };
 
-	[SerializeField]
-	float slotTolerance = 0.001f;
+        [SerializeField]
+        float accelBlend = 0.05f;
 
-	private Vector3 xDirection = new Vector3(1.0f, 0.0f, 0.0f);
-	private float[] camPositions = {0.33f, -0.33f, 0.0f};
-	private float destZ = 0.0f;
-	private eSlotState curSlotState = eSlotState.UNKNOWN;
-	private eSlotState wantSlotState = eSlotState.UNKNOWN;
-	private Vector3 vNewPos = Vector3.zero;
-	private float curZ = 0.0f;
+        [SerializeField]
+        float brakeBlend = 0.5f;
 
-	// Use this for initialization
-	void Start () {
-		Init();
-	}
+        public enum eSlot {INSIDE, OUTSIDE};
+
+        private float speed = 0.0f;
+        private float slot = 0.0f;
+        private float wantSlot = 0.0f;
+        private bool bBraking = false;
+        private float[] length = { 1.0f, 1.0f };
+        private Quaternion qLookBack = Quaternion.AngleAxis(180.0f, Vector3.up);
+
+	    // Use this for initialization
+	    void Start () {
+		    Init();
+	    }
 	
-	// Update is called once per frame
-	void Update () {
-		gameObject.transform.position = gameObject.transform.position + xDirection * speed * Time.deltaTime;
+	    // Update is called once per frame
+	    void Update () {
+            ApplyAcceleration();
 
-		float newZ = gameObject.transform.position.z;
-		if (curSlotState == eSlotState.TRANSITIONING) {
-			newZ = Mathf.Lerp(newZ, destZ, Mathf.Clamp(blendRate * Time.deltaTime, 0.0f, 1.0f));
+            slot = Mathf.Lerp(slot, wantSlot, blendRate * Time.deltaTime);
+            slot = Mathf.Clamp(slot, 0.0f, 1.0f);
 
-			if (Mathf.Abs(destZ - newZ) < slotTolerance) {
-				newZ = destZ;
+            Transform xFrmInside = tracker[(int)eSlot.INSIDE].gameObject.transform;
+            Transform xFrmOutside = tracker[(int)eSlot.OUTSIDE].gameObject.transform;
 
-				curSlotState = wantSlotState;
-			}
+            transform.position = Vector3.Lerp(xFrmInside.position, xFrmOutside.position, slot);
+            transform.rotation = Quaternion.Slerp(xFrmInside.rotation, xFrmOutside.rotation, slot) * qLookBack;
+	    }
 
-			SetSlotPos(newZ);
+        // Interface ///////////////////////////////////////////////////////////////////////////////////
+        public void Brake(bool bBrakesApplied) {
+            bBraking = bBrakesApplied;
+        }
 
-			curZ = newZ;
-		}
-	}
+        public void SetWantSlot(eSlot slot) {
+            wantSlot = slot == eSlot.INSIDE ? 0.0f : 1.0f;
+	    }
 
-	public void OnTriggerEnter(Collider other) {
-		Bounds otherBounds = other.bounds;
-		float offsetX = gameObject.transform.position.x - (other.bounds.center.x - other.bounds.extents.x);
+	    private void Init() {
+            slot = 0.0f;
+            wantSlot = 0.0f;
+        }
 
-		gameObject.transform.position = respawnPoint.transform.position - offsetX * xDirection;
-		SetSlotPos(curZ);
-	}
+        // Implementation ///////////////////////////////////////////////////////////////////////////////
 
-	public void SetState(eSlotState slotState) {
-		if (slotState != curSlotState &&
-			slotState > eSlotState.UNKNOWN &&
-			slotState < eSlotState.TRANSITIONING) {
-			destZ = camPositions[(int)slotState - 1];
-			curSlotState = eSlotState.TRANSITIONING;
-			wantSlotState = slotState;
-		}
-	}
+        private void ApplyAcceleration() {
+            if (bBraking) {
+                speed = Mathf.Lerp(speed, 0.0f, brakeBlend * Time.deltaTime);
+            }
+            else if (speed < topSpeed) {
+                speed = Mathf.Lerp(speed, topSpeed, accelBlend * Time.deltaTime);
+            }
 
-	private void Init() {
-		curSlotState = eSlotState.SLOT_RIGHT;
-		destZ = camPositions[(int)eSlotState.SLOT_RIGHT - 1];
-		gameObject.transform.position = new Vector3(gameObject.transform.position.x,
-													gameObject.transform.position.y,
-													destZ);
-		curZ = destZ;
-		wantSlotState = curSlotState;
+            if (length[(int)eSlot.INSIDE] == 0.0f || length[(int)eSlot.OUTSIDE] == 0.0f) {
+                length[(int)eSlot.INSIDE] = tracker[(int)eSlot.INSIDE].Length;
+                length[(int)eSlot.OUTSIDE] = tracker[(int)eSlot.OUTSIDE].Length;
+            }
 
-	}
-
-	private void SetSlotPos(float newZ) {
-		vNewPos.x = gameObject.transform.position.x;
-		vNewPos.y = gameObject.transform.position.y;
-		vNewPos.z = newZ;
-
-		gameObject.transform.position = vNewPos;
-	}
-}
+            float speedFactor = length[(int)eSlot.OUTSIDE] / length[(int)eSlot.INSIDE];
+            tracker[(int)eSlot.INSIDE].Speed = speed;
+            tracker[(int)eSlot.OUTSIDE].Speed = speed * speedFactor;
+        }
+    }
 
 } // end namespace

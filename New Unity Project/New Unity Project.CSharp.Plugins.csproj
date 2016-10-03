@@ -100,6 +100,15 @@
     <Compile Include="Assets\Standard Assets\Utility\WaypointProgressTracker.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\Billboard.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\Grid.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\Shape.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\VertexColor.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\VertexColorBillboard.shader" />
+    <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\VertexColorClip.shader" />
+    <None Include="Assets\Battlehub\SplineEditor\Shaders\Resources\SSBillboard.shader" />
+    <None Include="Assets\Battlehub\SplineEditor\Shaders\Resources\Spline.shader" />
+    <None Include="Assets\Res\Cars\AE_CARS\SAMOCHODY\Car_18\Skybox\readme.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
     <None Include="Assets\racetrack\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

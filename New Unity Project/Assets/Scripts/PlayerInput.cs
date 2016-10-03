@@ -9,31 +9,39 @@ public class PlayerInput : MonoBehaviour {
 
 	public void Update() {
 		if (raceCamera != null) {
-			if (Input.GetButtonDown("left")) {
-				raceCamera.SetState(LMQ_TrackTest.RaceCamera.eSlotState.SLOT_LEFT);
-			}
-			else if (Input.GetButtonDown("right")) {
-				raceCamera.SetState(LMQ_TrackTest.RaceCamera.eSlotState.SLOT_RIGHT);
-			}
-			else if (Input.touchCount == 1) {
-				if (Input.GetTouch(0).phase == TouchPhase.Began) {
-					if (Input.GetTouch(0).position.x < Screen.width / 2) {
-						raceCamera.SetState(LMQ_TrackTest.RaceCamera.eSlotState.SLOT_LEFT);
-					}
-					else {
-						raceCamera.SetState(LMQ_TrackTest.RaceCamera.eSlotState.SLOT_RIGHT);
-					}
-				}
-			}
-			else if (Input.touchCount == 2) {
-				if ((Input.GetTouch(0).position.x < Screen.width / 2 && Input.GetTouch(1).position.x > Screen.width / 2) ||
-					(Input.GetTouch(0).position.x > Screen.width / 2 && Input.GetTouch(1).position.x < Screen.width / 2)) {
-					// Apply brakes.
-				}
-			}
-			else {
-				// Accelerate, if we can.
-			}
+            bool bLeftDown = Input.GetButton("left");
+            bool bRightDown = Input.GetButton("right");
+
+            for (int i=0; i<Input.touchCount; ++i) {
+                if (Input.GetTouch(i).phase != TouchPhase.Canceled || Input.GetTouch(i).phase != TouchPhase.Ended) {
+                    if (Input.GetTouch(i).position.x < Screen.width / 2) {
+                        bLeftDown = true;
+                    }
+                    if (Input.GetTouch(i).position.x > Screen.width / 2) {
+                        bRightDown = true;
+                    }
+                }
+            }
+
+            if (bLeftDown && bRightDown) {
+                // Brake.
+                raceCamera.Brake(true);
+            }
+            else if (!bLeftDown && !bRightDown) {
+                // Accelerate.
+                raceCamera.Brake(false);
+            }
+            else {
+                if (bLeftDown) {
+                    raceCamera.Brake(false);
+                    raceCamera.SetWantSlot(LMQ_TrackTest.RaceCamera.eSlot.OUTSIDE);
+                }
+                else {
+                    // bRightDown == true;
+                    raceCamera.Brake(false);
+                    raceCamera.SetWantSlot(LMQ_TrackTest.RaceCamera.eSlot.INSIDE);
+                }
+            }
 		}
 	}	
 }
