@@ -109,6 +109,7 @@
     <Compile Include="Assets\Battlehub\Utils\EditorStopwatch.cs" />
     <Compile Include="Assets\Battlehub\Utils\ExposePropertyAttribute.cs" />
     <Compile Include="Assets\Battlehub\Utils\Run.cs" />
+    <Compile Include="Assets\DetectCurve.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\RaceCamera.cs" />
     <Compile Include="Assets\Scripts\SplineFollow.cs" />
