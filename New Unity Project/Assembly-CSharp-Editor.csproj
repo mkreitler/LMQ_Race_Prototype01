@@ -45,14 +45,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Battlehub\RTEditor\Scripts\Editor\RuntimeEditorEditor.cs" />
+     <Compile Include="Assets\Battlehub\RTEditor\Scripts\Editor\RuntimeEditorMenu.cs" />
+     <Compile Include="Assets\Battlehub\SplineEditor\Scripts\Editor\SplineBaseEditor.cs" />
+     <Compile Include="Assets\Battlehub\SplineEditor\Scripts\Editor\SplineControlPointEditor.cs" />
+     <Compile Include="Assets\Battlehub\SplineEditor\Scripts\Editor\SplineEditor.cs" />
+     <Compile Include="Assets\Battlehub\SplineEditor\Scripts\Editor\SplineMenu.cs" />
+     <Compile Include="Assets\Battlehub\SplineEditor\Scripts\Editor\SplineRuntimeEditorEditor.cs" />
+     <Compile Include="Assets\Battlehub\Utils\Editor\ExposeProperties.cs" />
      <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
      <None Include="Assets\racetrack\Characters\RollerBall\RollerBallGuidelines.txt" />
      <None Include="Assets\racetrack\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
+     <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\Shape.shader" />
+     <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\VertexColorClip.shader" />
+     <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\Billboard.shader" />
      <None Include="Assets\Res\Cars\AE_CARS\SAMOCHODY\Car_18\Skybox\readme.txt" />
+     <None Include="Assets\Battlehub\SplineEditor\Shaders\Resources\SSBillboard.shader" />
      <None Include="Assets\racetrack\Skyboxes\_skybox info.txt" />
      <None Include="Assets\Standard Assets\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+     <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\VertexColorBillboard.shader" />
+     <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\Grid.shader" />
+     <None Include="Assets\Battlehub\SplineEditor\Shaders\Resources\Spline.shader" />
      <None Include="Assets\racetrack\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
+     <None Include="Assets\Battlehub\RTHandles\Shaders\Resources\VertexColor.shader" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
